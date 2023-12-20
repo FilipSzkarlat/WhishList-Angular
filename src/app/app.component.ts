@@ -11,7 +11,7 @@ import { WishItem } from '../shared/models/wishItem';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  items = [
+  items: WishItem[] = [
     new WishItem('Learn Angular'),
     new WishItem('Get Coffee', true),
     new WishItem('Find grass that cuts itself'),
