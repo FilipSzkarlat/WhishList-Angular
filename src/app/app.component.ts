@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { WishItem } from '../shared/models/wishItem';
 import { FormsModule } from '@angular/forms';
 import { WishListComponent } from './wish-list/wish-list.component';
+import { AddWishFormComponent } from './add-wish-form/add-wish-form.component';
 
 const filters = [
   (item: WishItem) => item,
@@ -14,7 +15,13 @@ const filters = [
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, FormsModule, WishListComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    FormsModule,
+    WishListComponent,
+    AddWishFormComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -27,18 +34,9 @@ export class AppComponent {
 
   listFilter: any = '0';
 
-  newWishText = '';
-
   title = 'wishlist';
 
   get visibileItems(): WishItem[] {
     return this.items.filter(filters[this.listFilter]);
-  }
-
-  addNewWish() {
-    // todo: add wish to items array
-    this.items.push(new WishItem(this.newWishText));
-    // clear the textbox
-    this.newWishText = '';
   }
 }
